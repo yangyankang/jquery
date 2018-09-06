@@ -2917,23 +2917,23 @@ var rootjQuery,
 
 	init = jQuery.fn.init = function( selector, context, root ) {
 		var match, elem;
-
 		// HANDLE: $(""), $(null), $(undefined), $(false)
 		if ( !selector ) {
-			return this;
+			return this; //选择器为以上情况 this指向该构造函数的实例
 		}
 
 		// Method init() accepts an alternate rootjQuery
 		// so migrate can support jQuery.sub (gh-2101)
 		root = root || rootjQuery;
 
-		// Handle HTML strings
+		// Handle HTML strings 处理html字符串
 		if ( typeof selector === "string" ) {
 			if ( selector[ 0 ] === "<" &&
 				selector[ selector.length - 1 ] === ">" &&
 				selector.length >= 3 ) {
 
 				// Assume that strings that start and end with <> are HTML and skip the regex check
+				//假设以<>开头和结尾的字符串是HTML，并跳过regex检查
 				match = [ null, selector, null ];
 
 			} else {
@@ -10340,6 +10340,7 @@ if ( typeof define === "function" && define.amd ) {
 var
 
 	// Map over jQuery in case of overwrite
+	//这里将jquery和$暂存起来，这里window.jquery和windwo.$还没赋值是undefined
 	_jQuery = window.jQuery,
 
 	// Map over the $ in case of overwrite
